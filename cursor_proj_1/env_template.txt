@@ -1,0 +1,11 @@
+# Email Configuration
+MAIL_USERNAME=your_email@gmail.com
+MAIL_PASSWORD=your_app_password_here
+MAIL_DEFAULT_SENDER=your_email@gmail.com
+
+# Note: For Gmail, you need to use an App Password, not your regular password
+# To generate an App Password:
+# 1. Go to your Google Account settings
+# 2. Enable 2-Step Verification
+# 3. Go to Security > App passwords
+# 4. Generate a new app password for "Mail" 
