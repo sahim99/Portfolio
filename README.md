@@ -1,15 +1,17 @@
 # 🌟 SAHIM's Portfolio Website
 
-A modern, dark-themed personal portfolio website showcasing skills as a Python Developer and DevOps Engineer. Built with vanilla HTML, CSS, and JavaScript - no frameworks required!
+A modern, dark- and light-themed personal portfolio website showcasing skills as a Python Developer and DevOps Engineer. Built with vanilla HTML, CSS, and JavaScript - no frameworks required!
 
 ## ✨ Features
 
 ### 🎨 Design & Animation
-- **Dark Theme**: Modern dark color palette with blue/purple accents
-- **Animated Background**: Subtle particle effects and gradient waves
-- **Smooth Animations**: CSS transitions, transforms, and keyframe animations
-- **Typing Effect**: Animated text cycling through professional titles
-- **Scroll Animations**: Elements fade in as you scroll using Intersection Observer
+- **Light/Dark Mode Toggle**: Animated, modern pill switch in the navbar (sun/moon icon), with smooth transitions and theme persistence.
+- **Dark Theme**: Modern dark color palette with blue/purple accents and animated SVG circuit/tech background.
+- **Light Theme**: Clean, high-contrast palette with a beautiful blue/white animated background (uses a high-res image and blue overlay for a techy, soft look).
+- **Sticky Navbar**: Always visible, with perfect contrast and readability in both themes, even after scrolling.
+- **Smooth Animations**: All hero/menu text and navbar animate in on theme change for a polished feel.
+- **Typing Effect**: Animated text cycling through professional titles.
+- **Scroll Animations**: Elements fade in as you scroll using Intersection Observer.
 
 ### 📱 Responsive Design
 - **Mobile-First**: Optimized for all screen sizes
@@ -30,6 +32,7 @@ portfolio/
 ├── index.html          # Main HTML file
 ├── styles.css          # All CSS styles and animations
 ├── script.js           # JavaScript functionality
+├── ai-waves-light.png  # High-res background image for light mode (add this file)
 └── README.md           # This file
 ```
 
@@ -48,6 +51,10 @@ Simply open `index.html` in your web browser - no server required!
 
 ### 3. Customize Content
 Edit the HTML file to replace placeholder content with your information.
+
+### 4. Light Mode Background Image
+- Place your high-res background image for light mode as `ai-waves-light.png` in the project root.
+- For best results, use a 1920x1080 or higher PNG/JPG with soft blue/white gradients and techy waves.
 
 ## 🎯 Customization Guide
 
@@ -103,12 +110,23 @@ Update social media links:
 #### Colors (styles.css - Lines ~10-20)
 ```css
 :root {
-    --bg-primary: #0a0a0a;        /* Main background */
-    --bg-secondary: #111111;      /* Section backgrounds */
+    --bg-primary: #0a0a0a;        /* Main background (dark) */
+    --bg-secondary: #111111;      /* Section backgrounds (dark) */
     --accent-primary: #3b82f6;    /* Primary accent color */
     --accent-secondary: #8b5cf6;  /* Secondary accent color */
 }
+[data-theme="light"] {
+    --bg-primary: #f4f6fa;        /* Main background (light) */
+    --bg-secondary: #ffffff;      /* Section backgrounds (light) */
+    --accent-primary: #3b82f6;
+    --accent-secondary: #8b5cf6;
+}
 ```
+
+#### Navbar
+- The navbar is always visible, with high-contrast text and background in both themes.
+- The active menu item is bold and underlined.
+- The theme toggle is on the right, before the Contact link.
 
 #### Typography
 The website uses Inter font from Google Fonts. To change:
@@ -127,87 +145,18 @@ Add or remove tech stack items in the About section:
 ## 🎨 Animation Customization
 
 ### Typing Speed
-Modify the typing animation speed in `script.js` (Lines ~40-50):
-```javascript
-this.typingSpeed = 100;    // Speed of typing
-this.deletingSpeed = 50;   // Speed of deleting
-this.pauseTime = 2000;     // Pause between words
-```
+Adjust the typing effect speed in `script.js` if desired.
 
-### Scroll Animation Timing
-Adjust animation timing in `styles.css`:
-```css
-.fade-in {
-    transition: all 0.6s ease;  /* Animation duration */
-}
-```
+### Theme/Section Animations
+- All hero/menu text and navbar animate in on theme change for a smooth, modern feel.
+- Scroll animations are handled with Intersection Observer and CSS.
 
-## 📱 Mobile Optimization
+## 🌐 Live Demo
+Your site is live on GitHub Pages and all theme/navbar/background changes are visible on all pages and after scrolling.
 
-The website is fully responsive with:
-- **Breakpoints**: 768px (tablet), 480px (mobile)
-- **Touch Targets**: Minimum 44px for mobile interaction
-- **Readable Text**: Optimized font sizes for all screens
-- **Performance**: Optimized animations for mobile devices
+---
 
-## 🚀 Performance Features
-
-- **Lazy Loading**: Images load as needed
-- **Throttled Events**: Scroll events are throttled for performance
-- **Efficient Animations**: CSS transforms instead of layout changes
-- **Minimal Dependencies**: Only Font Awesome for icons
-
-## 🛠️ Browser Support
-
-- ✅ Chrome (latest)
-- ✅ Firefox (latest)
-- ✅ Safari (latest)
-- ✅ Edge (latest)
-- ✅ Mobile browsers
-
-## 📝 Code Structure
-
-### HTML Structure
-- Semantic HTML5 elements
-- Accessible markup with proper ARIA labels
-- Clean, commented code structure
-
-### CSS Organization
-- CSS Custom Properties for theming
-- Mobile-first responsive design
-- Modular component styles
-- Performance-optimized animations
-
-### JavaScript Features
-- ES6+ syntax
-- Class-based typing animation
-- Intersection Observer for scroll animations
-- Form validation and handling
-- Mobile navigation toggle
-
-## 🎁 Bonus Features
-
-- **Loading Screen**: Professional loading animation
-- **Notification System**: Success/error messages for form submission
-- **Parallax Effects**: Subtle background parallax on scroll
-- **Active Navigation**: Current section highlighting
-- **Smooth Transitions**: All interactive elements have smooth transitions
-
-## 🔧 Troubleshooting
-
-### Common Issues
-
-1. **Fonts not loading**: Check internet connection for Google Fonts
-2. **Icons not showing**: Ensure Font Awesome CDN is accessible
-3. **Animations not working**: Check if JavaScript is enabled
-4. **Mobile menu not working**: Ensure JavaScript is loaded properly
-
-### Performance Tips
-
-1. **Optimize images**: Use WebP format when possible
-2. **Minimize HTTP requests**: Combine CSS/JS files for production
-3. **Enable compression**: Use gzip compression on your server
-4. **Cache static assets**: Set appropriate cache headers
+For any further customization, just edit the relevant HTML, CSS, or JS files. Enjoy your modern, animated, and fully theme-aware portfolio!
 
 ## 📄 License
 
