@@ -107,12 +107,23 @@ document.addEventListener('DOMContentLoaded', () => {
 // Navbar background on scroll
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(10, 10, 10, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+        if (isLight) {
+            navbar.style.background = '#fff';
+            navbar.style.boxShadow = '0 4px 24px 0 rgba(80,180,255,0.10), 0 1.5px 0 #fff inset';
+        } else {
+            navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+        }
     } else {
-        navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-        navbar.style.boxShadow = 'none';
+        if (isLight) {
+            navbar.style.background = '#fff';
+            navbar.style.boxShadow = '0 4px 24px 0 rgba(80,180,255,0.10), 0 1.5px 0 #fff inset';
+        } else {
+            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+            navbar.style.boxShadow = 'none';
+        }
     }
 });
 
@@ -367,12 +378,23 @@ function throttle(func, limit) {
 window.addEventListener('scroll', throttle(() => {
     // Navbar background effect
     const navbar = document.querySelector('.navbar');
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(10, 10, 10, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+        if (isLight) {
+            navbar.style.background = '#fff';
+            navbar.style.boxShadow = '0 4px 24px 0 rgba(80,180,255,0.10), 0 1.5px 0 #fff inset';
+        } else {
+            navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+        }
     } else {
-        navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-        navbar.style.boxShadow = 'none';
+        if (isLight) {
+            navbar.style.background = '#fff';
+            navbar.style.boxShadow = '0 4px 24px 0 rgba(80,180,255,0.10), 0 1.5px 0 #fff inset';
+        } else {
+            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+            navbar.style.boxShadow = 'none';
+        }
     }
     
     // Active navigation highlighting
@@ -425,8 +447,20 @@ function getPreferredTheme() {
 const initialTheme = getPreferredTheme();
 setTheme(initialTheme);
 
+function animateThemeTransition() {
+  const body = document.body;
+  body.classList.add('theme-transition');
+  setTimeout(() => {
+    body.classList.add('theme-in');
+    setTimeout(() => {
+      body.classList.remove('theme-transition', 'theme-in');
+    }, 600);
+  }, 10);
+}
+
 if (themeToggleBtn) {
   themeToggleBtn.addEventListener('click', () => {
+    animateThemeTransition();
     const current = htmlEl.getAttribute('data-theme');
     const next = current === 'light' ? 'dark' : 'light';
     setTheme(next);
