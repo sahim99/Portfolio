@@ -139,6 +139,7 @@ window.addEventListener('scroll', () => {
 });
 
 // Contact Form Handling
+/*
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
@@ -194,6 +195,7 @@ if (contactForm) {
         }
     });
 }
+*/
 
 // Email validation function
 function isValidEmail(email) {
