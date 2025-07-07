@@ -394,4 +394,42 @@ window.addEventListener('scroll', throttle(() => {
             link.classList.add('active');
         }
     });
-}, 100)); 
+}, 100));
+
+// Theme Toggle Logic
+const themeToggleBtn = document.getElementById('theme-toggle-btn');
+const htmlEl = document.documentElement;
+const toggleIcon = themeToggleBtn ? themeToggleBtn.querySelector('.toggle-icon') : null;
+
+const sunSVG = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5.5" stroke="#FFD600" stroke-width="2"/><g stroke="#FFD600" stroke-width="2"><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>`;
+const moonSVG = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 0 1 12.21 3a7 7 0 1 0 8.79 9.79z" stroke="#B3B3B3" stroke-width="2"/></svg>`;
+
+function setTheme(theme) {
+  if (theme === 'light') {
+    htmlEl.setAttribute('data-theme', 'light');
+    themeToggleBtn.classList.remove('active');
+    if (toggleIcon) toggleIcon.innerHTML = sunSVG;
+  } else {
+    htmlEl.setAttribute('data-theme', 'dark');
+    themeToggleBtn.classList.add('active');
+    if (toggleIcon) toggleIcon.innerHTML = moonSVG;
+  }
+}
+
+function getPreferredTheme() {
+  const stored = localStorage.getItem('theme');
+  if (stored) return stored;
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+}
+
+const initialTheme = getPreferredTheme();
+setTheme(initialTheme);
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('click', () => {
+    const current = htmlEl.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    setTheme(next);
+    localStorage.setItem('theme', next);
+  });
+} 
