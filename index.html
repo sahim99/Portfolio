@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     <!-- Loading Screen -->
@@ -24,7 +25,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="profile.jpg" alt="Md Sahimuzzaman Photo" class="nav-profile-photo">
+                <img src="avatar.png" alt="Md Sahimuzzaman Avatar" class="nav-avatar">
                 <a href="#home">Md Sahimuzzaman</a>
             </div>
             <ul class="nav-menu">
@@ -54,58 +55,18 @@
         <div class="animated-background">
             <div class="particles"></div>
             <div class="gradient-waves"></div>
-            <div class="ai-brain-bg">
-                <svg id="ai-brain-svg" viewBox="0 0 400 250" width="400" height="250" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.7"/>
-                            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
-                        </radialGradient>
-                    </defs>
-                    <g stroke="#8b5cf6" stroke-width="2" opacity="0.5">
-                        <ellipse cx="200" cy="125" rx="120" ry="80" />
-                        <ellipse cx="200" cy="125" rx="90" ry="60" />
-                        <ellipse cx="200" cy="125" rx="60" ry="40" />
-                        <ellipse cx="200" cy="125" rx="30" ry="20" />
-                    </g>
-                    <g id="ai-connections" stroke="#06b6d4" stroke-width="1.5" opacity="0.7">
-                        <line x1="80" y1="125" x2="200" y2="45" />
-                        <line x1="80" y1="125" x2="110" y2="80" />
-                        <line x1="80" y1="125" x2="110" y2="170" />
-                        <line x1="320" y1="125" x2="200" y2="45" />
-                        <line x1="320" y1="125" x2="290" y2="80" />
-                        <line x1="320" y1="125" x2="290" y2="170" />
-                        <line x1="200" y1="45" x2="110" y2="80" />
-                        <line x1="200" y1="45" x2="290" y2="80" />
-                        <line x1="200" y1="205" x2="110" y2="170" />
-                        <line x1="200" y1="205" x2="290" y2="170" />
-                        <line x1="110" y1="80" x2="290" y2="80" />
-                        <line x1="110" y1="170" x2="290" y2="170" />
-                    </g>
-                    <g id="ai-nodes">
-                        <circle cx="80" cy="125" r="7" fill="url(#glow)" />
-                        <circle cx="320" cy="125" r="7" fill="url(#glow)" />
-                        <circle cx="200" cy="45" r="7" fill="url(#glow)" />
-                        <circle cx="200" cy="205" r="7" fill="url(#glow)" />
-                        <circle cx="110" cy="80" r="6" fill="#8b5cf6" />
-                        <circle cx="110" cy="170" r="6" fill="#8b5cf6" />
-                        <circle cx="290" cy="80" r="6" fill="#8b5cf6" />
-                        <circle cx="290" cy="170" r="6" fill="#8b5cf6" />
-                    </g>
-                </svg>
-            </div>
         </div>
         <div class="home-content">
             <div class="hero-text">
-                <h1 class="hero-title">Hi, I'm <span class="sahim-name">Sahim</span></h1>
-                <div class="typing-container">
+                <h1 class="hero-title" data-aos="fade-up">Hi, I'm <span class="sahim-name">Sahim</span></h1>
+                <div class="typing-container" data-aos="zoom-in" data-aos-delay="200">
                     <span class="typing-text">I'm a <span id="typing-word"></span></span>
                     <span class="typing-cursor">|</span>
                 </div>
-                <p class="hero-subtitle">Crafting robust solutions with code and infrastructure</p>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">Crafting robust solutions with code and infrastructure</p>
                 <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    <a href="#projects" class="btn btn-primary" data-aos="fade-right" data-aos-delay="600">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary" data-aos="fade-left" data-aos-delay="800">Get In Touch</a>
                 </div>
             </div>
         </div>
@@ -363,5 +324,9 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
 </body>
 </html> 
