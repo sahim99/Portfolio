@@ -104,8 +104,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Navbar background on scroll
-window.addEventListener('scroll', () => {
+// Animate SVG tech stack lines when diagram is in view
+(function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        const diagram = document.getElementById('tech-diagram');
+        if (!diagram) return;
+        const lines = diagram.querySelectorAll('.tech-link');
+        // Remove animation so it can be triggered
+        lines.forEach(line => {
+            line.style.animation = 'none';
+            // Force reflow
+            void line.offsetWidth;
+            line.style.animation = '';
+        });
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    lines.forEach(line => {
+                        line.classList.add('draw');
+                    });
+                    obs.disconnect();
+                }
+            });
+        }, { threshold: 0.2 });
+        observer.observe(diagram);
+    });
+})();
+
+// Add draw class animation for .tech-link
+const techStyle = document.createElement('style');
+techStyle.innerHTML = `
+    .tech-link.draw {
+        animation: drawLine 1.2s cubic-bezier(0.77,0,0.18,1) forwards;
+    }
+    .tech-link.draw:nth-of-type(1) { animation-delay: 0.1s; }
+    .tech-link.draw:nth-of-type(2) { animation-delay: 0.2s; }
+    .tech-link.draw:nth-of-type(3) { animation-delay: 0.3s; }
+    .tech-link.draw:nth-of-type(4) { animation-delay: 0.4s; }
+    .tech-link.draw:nth-of-type(5) { animation-delay: 0.5s; }
+    .tech-link.draw:nth-of-type(6) { animation-delay: 0.6s; }
+    .tech-link.draw:nth-of-type(7) { animation-delay: 0.7s; }
+    .tech-link.draw:nth-of-type(8) { animation-delay: 0.8s; }
+    .tech-link.draw:nth-of-type(9) { animation-delay: 0.9s; }
+    .tech-link.draw:nth-of-type(10) { animation-delay: 1.0s; }
+    .tech-link.draw:nth-of-type(11) { animation-delay: 1.1s; }
+    .tech-link.draw:nth-of-type(12) { animation-delay: 1.2s; }
+    .tech-link.draw:nth-of-type(13) { animation-delay: 1.3s; }
+    .tech-link.draw:nth-of-type(14) { animation-delay: 1.4s; }
+`;
+document.head.appendChild(techStyle);
+
+// --- Navbar background update logic as a function ---
+function updateNavbarBackground() {
     const navbar = document.querySelector('.navbar');
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     if (window.scrollY > 100) {
@@ -125,7 +175,15 @@ window.addEventListener('scroll', () => {
             navbar.style.boxShadow = 'none';
         }
     }
-});
+}
+window.addEventListener('scroll', updateNavbarBackground);
+// --- Ensure navbar updates after theme toggle ---
+const themeToggleBtn = document.getElementById('theme-toggle-btn');
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+        setTimeout(updateNavbarBackground, 10);
+    });
+}
 
 // Active navigation link highlighting
 window.addEventListener('scroll', () => {
@@ -419,7 +477,6 @@ window.addEventListener('scroll', throttle(() => {
 }, 100));
 
 // Theme Toggle Logic
-const themeToggleBtn = document.getElementById('theme-toggle-btn');
 const htmlEl = document.documentElement;
 const toggleIcon = themeToggleBtn ? themeToggleBtn.querySelector('.toggle-icon') : null;
 
@@ -467,3 +524,50 @@ if (themeToggleBtn) {
     localStorage.setItem('theme', next);
   });
 } 
+
+// --- Tech Tree Tooltip Logic ---
+document.addEventListener('DOMContentLoaded', function() {
+  const diagram = document.getElementById('tech-diagram');
+  const tooltip = document.getElementById('tech-tooltip');
+  if (!diagram || !tooltip) return;
+
+  const techDescriptions = {
+    Python: 'Core language for backend, automation, and AI/ML.',
+    Flask: 'Lightweight Python web framework for APIs and apps.',
+    Docker: 'Containerization for consistent, portable deployments.',
+    AWS: 'Cloud platform for scalable infrastructure and services.',
+    Terraform: 'Infrastructure as Code for cloud automation.',
+    Jenkins: 'CI/CD automation server for DevOps pipelines.',
+    Linux: 'Open-source OS for servers, dev, and automation.',
+    Git: 'Version control for code collaboration and history.',
+    SQL: 'Relational databases for structured data and analytics.'
+  };
+
+  function showTooltip(evt, tech) {
+    tooltip.textContent = techDescriptions[tech] || tech;
+    tooltip.classList.add('visible');
+    // Position tooltip near mouse, but within container
+    const containerRect = diagram.getBoundingClientRect();
+    const mouseX = evt.clientX - containerRect.left;
+    const mouseY = evt.clientY - containerRect.top;
+    tooltip.style.left = `${mouseX + 12}px`;
+    tooltip.style.top = `${mouseY - 8}px`;
+    tooltip.style.transition = 'opacity 0.2s, transform 0.2s';
+    tooltip.style.opacity = '1';
+    tooltip.style.transform = 'translateY(-12px) scale(1.08)';
+  }
+  function hideTooltip() {
+    tooltip.classList.remove('visible');
+    tooltip.style.opacity = '0';
+    tooltip.style.transform = 'scale(1)';
+  }
+  diagram.querySelectorAll('.tech-node').forEach(node => {
+    const tech = node.getAttribute('data-tech');
+    node.addEventListener('mousemove', e => showTooltip(e, tech));
+    node.addEventListener('mouseleave', hideTooltip);
+    node.addEventListener('touchstart', e => {
+      showTooltip(e.touches[0], tech);
+      setTimeout(hideTooltip, 2000);
+    });
+  });
+}); 
