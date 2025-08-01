@@ -1,12 +1,27 @@
-// Loading Screen
+// Loading Screen - Optimized for faster loading
 window.addEventListener('load', () => {
     const loadingScreen = document.getElementById('loading-screen');
+    // Reduce loading time from 1.5s to 0.8s
     setTimeout(() => {
         loadingScreen.style.opacity = '0';
         setTimeout(() => {
             loadingScreen.style.display = 'none';
-        }, 500);
-    }, 1500);
+        }, 300); // Reduced from 500ms
+    }, 800); // Reduced from 1500ms
+});
+
+// Hide loading screen if page loads very fast
+document.addEventListener('DOMContentLoaded', () => {
+    const loadingScreen = document.getElementById('loading-screen');
+    // If page loads in less than 500ms, hide loading screen immediately
+    setTimeout(() => {
+        if (loadingScreen.style.display !== 'none') {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 300);
+        }
+    }, 500);
 });
 
 // Mobile Navigation Toggle
@@ -80,9 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typingWordSpan) typeWord();
 });
 
-// Scroll Animations using Intersection Observer
+// Scroll Animations using Intersection Observer - Optimized
 const observerOptions = {
-    threshold: 0.1,
+    threshold: 0.05, // Reduced from 0.1 for better performance
     rootMargin: '0px 0px -50px 0px'
 };
 
@@ -90,11 +105,13 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            // Unobserve after animation to improve performance
+            observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-// Add fade-in class to elements and observe them
+// Add fade-in class to elements and observe them - Optimized
 document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll('.about-content, .tech-item, .project-card, .contact-content');
     
