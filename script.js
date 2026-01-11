@@ -133,7 +133,33 @@ function initAnimations() {
         duration: 0.8,
         stagger: 0.2,
         ease: 'back.out(1.7)'
-    }, '-=0.5');
+    }, '-=0.5')
+    .from('.hero-socials a', {
+        y: 20,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: 'power3.out',
+        onComplete: () => {
+             // Start Floating Animation after entrance
+             gsap.to('.cta-buttons .btn', {
+                 y: '-=10',
+                 duration: 2,
+                 yoyo: true,
+                 repeat: -1,
+                 ease: 'sine.inOut',
+                 stagger: 0.2
+             });
+             gsap.to('.hero-socials a', {
+                 y: '-=8',
+                 duration: 2.5,
+                 yoyo: true,
+                 repeat: -1,
+                 ease: 'sine.inOut',
+                 stagger: 0.1
+             });
+        }
+    }, '-=0.6');
 
     // Section Titles Reveal
     gsap.utils.toArray('.section-title').forEach(title => {
@@ -163,28 +189,36 @@ function initAnimations() {
         ease: 'power3.out'
     });
 
-    // Project Cards Stagger
-    gsap.from('.project-card', {
-        scrollTrigger: {
-            trigger: '.projects-grid',
-            start: 'top 75%'
-        },
-        y: 100,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out'
+    // Project Cards Reveal (Robust)
+    const projectCards = gsap.utils.toArray('.project-card');
+    projectCards.forEach((card, i) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 85%', // Trigger slightly earlier
+                toggleActions: 'play none none reverse'
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.6,
+            delay: i * 0.1, // Simple index-based delay based on order in DOM
+            ease: 'power2.out',
+            clearProps: 'all' // Ensure visibility remains after animation
+        });
     });
 
+    // Navbar Scroll Effect
     // Navbar Scroll Effect
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(5, 5, 5, 0.85)';
-            navbar.style.padding = '0.8rem 2rem';
+            navbar.style.background = 'rgba(5, 5, 5, 0.9)'; // Darker background on scroll
+            navbar.style.padding = '0.8rem 0';
+            navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
         } else {
             navbar.style.background = 'rgba(10, 10, 10, 0.6)';
-            navbar.style.padding = '1rem 2rem';
+            navbar.style.padding = '1rem 0';
+            navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.08)';
         }
     });
 }
