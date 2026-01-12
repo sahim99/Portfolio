@@ -129,7 +129,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-container {
     width: 100%;
-    padding: 0 5%; /* 5% padding on sides for nice spacing */
+    padding: 0 2rem; /* Reduced padding for cleaner edge-to-edge look */
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -369,7 +369,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: 1fr 1fr; /* Equal width columns */
     gap: 2rem;
     align-items: stretch;
 }
@@ -410,20 +410,20 @@ h1, h2, h3, h4, h5, h6 {
 
 .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); /* Slightly larger min-width */
+    gap: 2rem; /* Larger gap */
 }
 
 .tech-item {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 16px;
-    padding: 1.5rem;
+    border-radius: 20px;
+    padding: 2rem; /* Increased padding */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.8rem;
+    gap: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -667,15 +667,112 @@ footer {
     border-top: 1px solid rgba(255,255,255,0.05);
 }
 
+/* Mobile Toggle */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--text-primary);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .section-title { font-size: 2.5rem; }
     .hero-title { font-size: 2.8rem; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .navbar { width: 100%; top: 0; border-radius: 0; border: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .nav-menu { display: none; } /* Add mobile menu logic if needed, simplify for now */
+    
+    .nav-menu { 
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--bg-dark);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 2rem 0;
+        z-index: 999;
+        display: flex; /* Ensure flex is applied for direction */
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        margin: 2.5rem 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
     .nav-container { justify-content: space-between; }
-    /* Mobile Menu Hook would go here */
 }
 
 @keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* Floating Mail Button Animation */
+@keyframes floatFixed {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.floating-mail-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--bg-dark);
+    font-size: 1.5rem;
+    box-shadow: 0 0 20px rgba(0, 242, 96, 0.4);
+    z-index: 9999; /* Ensure on top */
+    transition: all 0.3s ease;
+    animation: floatFixed 3s ease-in-out infinite;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.floating-mail-btn:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 242, 96, 0.8);
+    color: #fff;
+    background: var(--text-accent);
+}
+
+/* Nav Icon Tweaks */
+.nav-link.nav-icon {
+    font-size: 1.4rem;
+    margin-left: 1.5rem;
+    display: flex;
+    align-items: center;
+}
