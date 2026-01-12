@@ -19,7 +19,7 @@
     <meta name="twitter:description" content="Portfolio of Md Sahim – Python and Flask Developer." />
     <meta name="twitter:image" content="https://sahim99.github.io/Portfolio/avatar.png" />
     <link rel="icon" href="favicon.png" />
-    <link rel="stylesheet" href="styles.css?v=1.1">
+    <link rel="stylesheet" href="styles.css?v=1.2">
     
     <!-- Critical CSS for above-the-fold content -->
     <style>
@@ -169,13 +169,6 @@
             </p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-            </div>
-            
-            <div class="hero-socials">
-                <a href="https://www.linkedin.com/in/md-sahimuzzaman-7976902b6/" target="_blank" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
             </div>
         </div>
     </section>
@@ -188,16 +181,18 @@
                 <!-- Left Column: Info Cards -->
                 <div class="about-info">
                     <div class="info-card">
-                        <h3>Who I Am</h3>
-                        <p>I'm Md Sahimuzzaman, a Python Developer and DevOps Engineer with a B.Tech in AI & ML. My journey is driven by curiosity to solve complex problems through automation.</p>
-                    </div>
-                    <div class="info-card">
-                        <h3>What I Do</h3>
-                        <p>I specialize in backend development (FastAPI/Flask), cloud infrastructure (AWS/Docker), and AI integration. I build robust APIs and scalable systems.</p>
-                    </div>
-                    <div class="info-card">
-                        <h3>Education</h3>
-                        <p>B.Tech in Artificial Intelligence and Machine Learning. Strong foundation in theoretical concepts and practical AI applications.</p>
+                        <div class="profile-row">
+                            <h3><i class="fas fa-user-astronaut"></i> Who I Am</h3>
+                            <p>I'm Md Sahimuzzaman, a Python Developer and DevOps Engineer with a B.Tech in AI & ML. My journey is driven by curiosity to solve complex problems through automation.</p>
+                        </div>
+                        <div class="profile-row">
+                            <h3><i class="fas fa-laptop-code"></i> What I Do</h3>
+                            <p>I specialize in backend development (FastAPI/Flask), cloud infrastructure (AWS/Docker), and AI integration. I build robust APIs and scalable systems.</p>
+                        </div>
+                        <div class="profile-row last">
+                            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                            <p>B.Tech in Artificial Intelligence and Machine Learning. Strong foundation in theoretical concepts and practical AI applications.</p>
+                        </div>
                     </div>
                 </div>
 
@@ -252,36 +247,40 @@
             <div class="projects-grid">
                 <!-- 1. WinderInvoice -->
                 <div class="project-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                    <div class="project-cover">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>WinderInvoice — GST Billing</h3>
-                        <p>Full-stack GST billing web app to create invoices, calculate taxes, and generate PDFs.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge">FastAPI</span>
-                            <span class="tech-badge">React</span>
-                            <span class="tech-badge">PostgreSQL</span>
-                            <span class="tech-badge">Railway</span>
+                    <a href="https://github.com/sahim99/WinderInvoice" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="project-cover">
+                            <i class="fas fa-file-invoice-dollar"></i>
                         </div>
-                    </div>
+                        <div class="project-content">
+                            <h3>WinderInvoice — GST Billing</h3>
+                            <p>Full-stack GST billing web app to create invoices, calculate taxes, and generate PDFs.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">FastAPI</span>
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">PostgreSQL</span>
+                                <span class="tech-badge">Railway</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- 2. AI Chat Backend -->
                 <div class="project-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                    <div class="project-cover">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>AI Chat System</h3>
-                        <p>Real-time AI chat with session memory, streaming responses, and WebSocket integration.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge">FastAPI</span>
-                            <span class="tech-badge">WebSockets</span>
-                            <span class="tech-badge">Streamlit</span>
-                            <span class="tech-badge">Supabase</span>
+                    <a href="https://github.com/sahim99/ai-chat-backend" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="project-cover">
+                            <i class="fas fa-robot"></i>
                         </div>
-                    </div>
+                        <div class="project-content">
+                            <h3>AI Chat System</h3>
+                            <p>Real-time AI chat with session memory, streaming responses, and WebSocket integration.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">FastAPI</span>
+                                <span class="tech-badge">WebSockets</span>
+                                <span class="tech-badge">Streamlit</span>
+                                <span class="tech-badge">Supabase</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- 3. SAFAR -->
@@ -303,18 +302,20 @@
 
                 <!-- 4. Dashboard UI -->
                 <div class="project-card" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
-                    <div class="project-cover">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Pixel-Perfect Dashboard</h3>
-                        <p>Complex dashboard UI with Recharts, Framer Motion, and strict pixel-perfect implementation.</p>
-                        <div class="project-tech">
-                            <span class="tech-badge">React</span>
-                            <span class="tech-badge">TypeScript</span>
-                            <span class="tech-badge">TailwindCSS</span>
+                    <a href="https://github.com/sahim99/analytics-dashboard" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="project-cover">
+                            <i class="fas fa-chart-line"></i>
                         </div>
-                    </div>
+                        <div class="project-content">
+                            <h3>Pixel-Perfect Dashboard</h3>
+                            <p>Complex dashboard UI with Recharts, Framer Motion, and strict pixel-perfect implementation.</p>
+                            <div class="project-tech">
+                                <span class="tech-badge">React</span>
+                                <span class="tech-badge">TypeScript</span>
+                                <span class="tech-badge">TailwindCSS</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- 5. AI Web Scraper -->
@@ -412,7 +413,7 @@
     </a>
 
     <!-- Load scripts with defer for better performance -->
-    <script src="script.js?v=1.1" defer></script>
+    <script src="script.js?v=1.2" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script>
       // Initialize AOS when DOM is ready

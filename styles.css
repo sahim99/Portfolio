@@ -184,6 +184,11 @@ h1, h2, h3, h4, h5, h6 {
     gap: 10px; /* Space between photo and name */
 }
 
+.nav-link.nav-icon::after {
+    display: none !important;
+    content: none !important;
+}
+
 .nav-avatar {
     border-radius: 50%;
     object-fit: cover;
@@ -308,6 +313,12 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: -2px;
 }
 
+.cta-buttons {
+    margin-top: 2rem;
+    opacity: 1;
+    display: block;
+}
+
 .hero-gradient-text {
     background: var(--gradient-1);
     -webkit-background-clip: text;
@@ -394,6 +405,28 @@ h1, h2, h3, h4, h5, h6 {
     backdrop-filter: blur(10px);
     margin-bottom: 2rem;
     transition: transform 0.3s ease;
+    height: 100%; /* Ensure full height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute rows evenly */
+}
+
+.profile-row {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.profile-row.last {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.profile-row h3 i {
+    color: var(--gradient-1);
+    margin-right: 0.8rem;
+    font-size: 1.2rem;
 }
 
 .info-card:hover {

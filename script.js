@@ -5,11 +5,13 @@ window.addEventListener('load', () => {
     const loadingScreen = document.getElementById('loading-screen');
     gsap.to(loadingScreen, {
         opacity: 0,
-        duration: 0.8,
-        delay: 0.5,
+        duration: 0.5, // Faster fade
+        delay: 0.2,    // Shorter wait
+        onStart: () => {
+            initAnimations(); // Start animations immediately as screen fades
+        },
         onComplete: () => {
             loadingScreen.style.display = 'none';
-            initAnimations(); // Start animations after load
         }
     });
 });
@@ -128,38 +130,22 @@ function initAnimations() {
         ease: 'power3.out'
     }, '-=0.5')
     .from('.cta-buttons .btn', {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'back.out(1.7)'
-    }, '-=0.5')
-    .from('.hero-socials a', {
         y: 20,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out',
-        onComplete: () => {
-             // Start Floating Animation after entrance
-             gsap.to('.cta-buttons .btn', {
-                 y: '-=10',
-                 duration: 2,
-                 yoyo: true,
-                 repeat: -1,
-                 ease: 'sine.inOut',
-                 stagger: 0.2
-             });
-             gsap.to('.hero-socials a', {
-                 y: '-=8',
-                 duration: 2.5,
-                 yoyo: true,
-                 repeat: -1,
-                 ease: 'sine.inOut',
-                 stagger: 0.1
-             });
-        }
-    }, '-=0.6');
+        duration: 0.6, // Faster duration
+        ease: 'back.out(1.7)',
+        clearProps: 'opacity' 
+    }, '-=0.8') // Start much earlier (almost with subtitle)
+    .add(() => {
+         // Start Floating Animation after entrance timeline completes
+         gsap.to('.cta-buttons .btn', {
+             y: -10, // Move up 10px from current (0)
+             duration: 2,
+             yoyo: true,
+             repeat: -1,
+             ease: 'sine.inOut'
+         });
+    });
 
     // Section Titles Reveal
     gsap.utils.toArray('.section-title').forEach(title => {
