@@ -88,17 +88,96 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       5. Dynamic Theme Color Picker
+       5. Premium Theme Color Controller (iro.js)
        ========================================================================== */
-    const colorPickers = document.querySelectorAll('.theme-color-picker');
-    
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    const themeColorPanel = document.getElementById('theme-color-panel');
+    const hexInput = document.getElementById('hex-input');
+    const livePreview = document.getElementById('live-color-preview');
+    const btnApply = document.getElementById('btn-apply-color');
+    const btnReset = document.getElementById('btn-reset-color');
+    const presetBtns = document.querySelectorAll('.preset-btn');
+
+    let currentColorHex = '#00fdee';
+
+    // Initialize iro.js Color Picker
+    let colorPicker;
+    if (typeof iro !== 'undefined') {
+        colorPicker = new iro.ColorPicker("#iro-color-wheel", {
+            width: 200,
+            color: currentColorHex,
+            borderWidth: 2,
+            borderColor: "rgba(255,255,255,0.1)",
+            layout: [
+                { component: iro.ui.Wheel, options: {} },
+                { component: iro.ui.Slider, options: { sliderType: 'value' } }
+            ]
+        });
+
+        // Update preview and input when dragging wheel
+        colorPicker.on('color:change', function(color) {
+            livePreview.style.backgroundColor = color.hexString;
+            hexInput.value = color.hexString;
+            currentColorHex = color.hexString;
+        });
+    }
+
+    // Toggle Panel Visibility
+    if (themeToggleBtn && themeColorPanel) {
+        themeToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            themeColorPanel.classList.toggle('open');
+            if (themeColorPanel.classList.contains('open') && colorPicker) {
+                // Reset wheel to current theme color when opening
+                const currentTheme = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim();
+                if (currentTheme) {
+                    colorPicker.color.hexString = currentTheme;
+                    livePreview.style.backgroundColor = currentTheme;
+                    hexInput.value = currentTheme;
+                    currentColorHex = currentTheme;
+                }
+            }
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (themeColorPanel.classList.contains('open') && !themeColorPanel.contains(e.target)) {
+                themeColorPanel.classList.remove('open');
+            }
+        });
+        
+        // Prevent closing when clicking inside panel
+        themeColorPanel.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+
+    // Hex Input Manual Edit
+    if (hexInput && colorPicker) {
+        hexInput.addEventListener('change', (e) => {
+            const hex = e.target.value;
+            if (/^#[0-9A-F]{6}$/i.test(hex)) {
+                colorPicker.color.hexString = hex;
+            } else {
+                e.target.value = currentColorHex; // Revert if invalid
+            }
+        });
+    }
+
+    // Preset Swatches
+    presetBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const hex = btn.getAttribute('data-color');
+            if (colorPicker) {
+                colorPicker.color.hexString = hex;
+            }
+        });
+    });
+
+    // Helper Functions for Color Math
     function hexToRgb(hex) {
         const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result ? {
-            r: parseInt(result[1], 16),
-            g: parseInt(result[2], 16),
-            b: parseInt(result[3], 16)
-        } : null;
+        return result ? { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) } : null;
     }
 
     function hexToHsl(hex) {
@@ -130,14 +209,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return `#${f(0)}${f(8)}${f(4)}`;
     }
 
-    function updateThemeColor(hexColor) {
+    // Core Apply Function
+    function applyThemeColor(hexColor) {
         const root = document.documentElement;
         const rgb = hexToRgb(hexColor);
         
         root.style.setProperty('--color-primary', hexColor);
         root.style.setProperty('--theme-rgb', `${rgb.r}, ${rgb.g}, ${rgb.b}`);
         
-        // Create an analogous color for the secondary elements (shift hue by 60 degrees)
         const hsl = hexToHsl(hexColor);
         const secHue = (hsl.h + 60) % 360;
         const secHex = hslToHex(secHue, hsl.s * 100, hsl.l * 100);
@@ -146,14 +225,27 @@ document.addEventListener('DOMContentLoaded', () => {
         root.style.setProperty('--color-secondary', secHex);
         root.style.setProperty('--theme-secondary-rgb', `${secRgb.r}, ${secRgb.g}, ${secRgb.b}`);
         
-        // Sync pickers and notify ThreeJS
-        colorPickers.forEach(p => p.value = hexColor);
         window.dispatchEvent(new CustomEvent('themeColorChanged', { detail: { primary: hexColor } }));
+        if (themeColorPanel) themeColorPanel.classList.remove('open');
     }
 
-    colorPickers.forEach(picker => {
-        picker.addEventListener('input', (e) => updateThemeColor(e.target.value));
-    });
+    // Apply Button
+    if (btnApply) {
+        btnApply.addEventListener('click', () => {
+            applyThemeColor(currentColorHex);
+        });
+    }
+
+    // Reset Button
+    if (btnReset) {
+        btnReset.addEventListener('click', () => {
+            const defaultColor = '#00fdee';
+            if (colorPicker) {
+                colorPicker.color.hexString = defaultColor;
+            }
+            applyThemeColor(defaultColor);
+        });
+    }
 
     /* ==========================================================================
        6. Three.js Space Chase Animation (Hero Section)

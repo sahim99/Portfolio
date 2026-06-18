@@ -67,6 +67,35 @@ body::after {
 }
 
 /* ==========================================================================
+   Custom Color Controller Panel
+   ========================================================================== */
+.color-panel {
+    background: rgba(14, 14, 15, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    width: 280px;
+}
+
+.color-panel.open {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.preset-btn {
+    border: 2px solid transparent;
+}
+.preset-btn:hover {
+    border-color: rgba(255,255,255,0.8);
+    box-shadow: 0 0 10px currentColor;
+}
+
+/* Override iro.js default focus outline */
+.IroColorPicker * {
+    outline: none !important;
+}
+
+/* ==========================================================================
    Global Resets & Base Styles
    ========================================================================== */
 html {
