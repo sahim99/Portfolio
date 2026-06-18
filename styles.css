@@ -77,9 +77,9 @@ body::after {
 }
 
 .color-panel.open {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: scale(1) !important;
 }
 
 .preset-btn {
