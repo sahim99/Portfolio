@@ -13,15 +13,15 @@
     --color-surface-lowest: #0e0e0f;
     --color-surface-bright: #3a393a;
     
-    --color-primary: #a5e7ff;
-    --color-primary-dim: #47d6ff;
+    --color-primary: #00fdee;
+    --color-primary-dim: #00ded1;
     --color-primary-container: #00d2ff;
     --color-on-primary-container: #00566a;
     
-    --color-secondary: #ffffff;
-    --color-secondary-fixed: #00fdee;
-    --color-secondary-fixed-dim: #00ded1;
-    --color-secondary-container: #00fdee;
+    --color-secondary: #a855f7;
+    --color-secondary-fixed: #c084fc;
+    --color-secondary-fixed-dim: #d8b4fe;
+    --color-secondary-container: #3b0764;
     
     --color-tertiary: #e5d7ff;
     --color-tertiary-container: #ccb6ff;
@@ -37,6 +37,33 @@
     --font-display: 'Geist', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     --font-body: 'Inter', sans-serif;
+}
+
+/* Purple ambient glow background */
+body::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -20%;
+    left: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(0, 253, 238, 0.05) 0%, rgba(0, 0, 0, 0) 60%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
 }
 
 /* ==========================================================================
