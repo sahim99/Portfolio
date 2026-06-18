@@ -88,7 +88,75 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       5. Three.js Space Chase Animation (Hero Section)
+       5. Dynamic Theme Color Picker
+       ========================================================================== */
+    const colorPickers = document.querySelectorAll('.theme-color-picker');
+    
+    function hexToRgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+
+    function hexToHsl(hex) {
+        let { r, g, b } = hexToRgb(hex);
+        r /= 255; g /= 255; b /= 255;
+        const max = Math.max(r, g, b), min = Math.min(r, g, b);
+        let h, s, l = (max + min) / 2;
+        if (max !== min) {
+            const d = max - min;
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+            switch (max) {
+                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                case g: h = (b - r) / d + 2; break;
+                case b: h = (r - g) / d + 4; break;
+            }
+            h /= 6;
+        } else { h = s = 0; }
+        return { h: h * 360, s, l };
+    }
+
+    function hslToHex(h, s, l) {
+        l /= 100;
+        const a = s * Math.min(l, 1 - l) / 100;
+        const f = n => {
+            const k = (n + h / 30) % 12;
+            const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+            return Math.round(255 * color).toString(16).padStart(2, '0');
+        };
+        return `#${f(0)}${f(8)}${f(4)}`;
+    }
+
+    function updateThemeColor(hexColor) {
+        const root = document.documentElement;
+        const rgb = hexToRgb(hexColor);
+        
+        root.style.setProperty('--color-primary', hexColor);
+        root.style.setProperty('--theme-rgb', `${rgb.r}, ${rgb.g}, ${rgb.b}`);
+        
+        // Create an analogous color for the secondary elements (shift hue by 60 degrees)
+        const hsl = hexToHsl(hexColor);
+        const secHue = (hsl.h + 60) % 360;
+        const secHex = hslToHex(secHue, hsl.s * 100, hsl.l * 100);
+        const secRgb = hexToRgb(secHex);
+        
+        root.style.setProperty('--color-secondary', secHex);
+        root.style.setProperty('--theme-secondary-rgb', `${secRgb.r}, ${secRgb.g}, ${secRgb.b}`);
+        
+        // Sync pickers and notify ThreeJS
+        colorPickers.forEach(p => p.value = hexColor);
+        window.dispatchEvent(new CustomEvent('themeColorChanged', { detail: { primary: hexColor } }));
+    }
+
+    colorPickers.forEach(picker => {
+        picker.addEventListener('input', (e) => updateThemeColor(e.target.value));
+    });
+
+    /* ==========================================================================
+       6. Three.js Space Chase Animation (Hero Section)
        ========================================================================== */
     (function initThreeJS() {
         const container = document.getElementById('threejs-container-hero');
@@ -182,6 +250,16 @@ document.addEventListener('DOMContentLoaded', () => {
             bolts.push(bolt);
             scene.add(bolt);
         }
+
+        // Listen for Theme Color Changes
+        window.addEventListener('themeColorChanged', (e) => {
+            const newColor = new THREE.Color(e.detail.primary);
+            starMaterial.color = newColor;
+            nebulaMat.color = newColor;
+            mainLight.color = newColor;
+            engineMat.color = newColor;
+            boltMaterial.color = newColor;
+        });
 
         camera.position.z = 15;
         camera.position.y = 5;
