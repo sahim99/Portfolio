@@ -43,10 +43,10 @@ function initThreeJS() {
 
     // Material
     const particlesMaterial = new THREE.PointsMaterial({
-        size: 0.03,
-        color: 0x64ffda, // Accent Color
+        size: 0.04,
+        color: 0x3b82f6, // Professional blue
         transparent: true,
-        opacity: 0.8,
+        opacity: 0.6,
     });
 
     // Mesh
