@@ -1,405 +1,533 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark scroll-smooth" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md Sahimuzzaman | Python Developer Portfolio</title>
-    <meta name="description" content="Portfolio of Md Sahim – Python and Flask Developer." />
-    <meta name="keywords" content="Md Sahim, Python Developer, Sahimuzzaman, Portfolio" />
-    <meta name="author" content="Md Sahimuzzaman" />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Md Sahim Portfolio" />
-    <meta property="og:description" content="Explore projects by Md Sahim – a Python backend developer." />
-    <meta property="og:image" content="https://sahim99.github.io/Portfolio/avatar.png" />
-    <meta property="og:url" content="https://sahim99.github.io/Portfolio/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Md Sahimuzzaman Portfolio" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Md Sahimuzzaman | Python Developer Portfolio" />
-    <meta name="twitter:description" content="Portfolio of Md Sahim – Python and Flask Developer." />
-    <meta name="twitter:image" content="https://sahim99.github.io/Portfolio/avatar.png" />
-    <link rel="icon" href="favicon.png" />
-    <link rel="stylesheet" href="styles.css?v=1.2">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Sahimuzzaman.ai | AI Engineer Portfolio</title>
+    <meta name="description" content="Portfolio of Md Sahimuzzaman – Associate AI Engineer & Full-Stack Developer." />
     
-    <!-- Critical CSS for above-the-fold content -->
-    <style>
-        /* Critical styles for immediate display */
-        body { 
-            margin: 0; 
-            font-family: 'Outfit', sans-serif; 
-            background-color: #0a0a0a; 
-            color: #ffffff; 
-        }
-        #loading-screen { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: #0a0a0a; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            z-index: 9999; 
-        }
-        .navbar { 
-            position: fixed; 
-            top: 0; 
-            width: 100%; 
-            background: rgba(10, 10, 10, 0.95); 
-            backdrop-filter: blur(10px); 
-            z-index: 1000; 
-        }
-    </style>
-    <!-- Preload critical resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://unpkg.com">
+    <!-- Tailwind CSS (via CDN as used in Stitch) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     
-    <!-- Load fonts with display=swap for better performance -->
-    <!-- Load fonts with display=swap for better performance -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Geist:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     
-    <!-- Three.js & GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-    
-    <!-- Load Font Awesome with async -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    
-    <!-- Load AOS with async -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"></noscript>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Md Sahimuzzaman",
-      "url": "https://sahim99.github.io/Portfolio/",
-      "image": "https://sahim99.github.io/Portfolio/avatar.png",
-      "sameAs": [
-        "https://github.com/sahim99",
-        "https://www.linkedin.com/in/md-sahimuzzaman-7976902b6/"
-      ],
-      "jobTitle": "Associate AI Engineer, Full-Stack Developer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Asrax Technologies"
-      }
-    }
-    </script>
-    <meta name="google-site-verification" content="CRx8U-5HABG3lfV0T1uAgjH5bcyGtQZv3DJ4pqQGE4E" />
-    
-    <!-- Resource hints for faster loading -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="//unpkg.com">
-</head>
-<body>
-    <!-- 3D Background Container -->
-    <div id="canvas-container"></div>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css"/>
 
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="loader">
-            <div class="loader-circle"></div>
-            <p>Loading...</p>
-        </div>
-    </div>
+    <!-- Tailwind Config to match Stitch tokens -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "outline-variant": "#3c494e",
+                        "surface-container-high": "#2a2a2b",
+                        "on-secondary": "#003733",
+                        "secondary-container": "#00fdee",
+                        "on-primary-fixed": "#001f28",
+                        "on-error": "#690005",
+                        "tertiary": "#e5d7ff",
+                        "on-primary-container": "#00566a",
+                        "on-primary": "#003543",
+                        "surface-container": "#201f20",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#00ded1",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#d1bcff",
+                        "primary-container": "#00d2ff",
+                        "tertiary-container": "#ccb6ff",
+                        "primary-fixed": "#b6ebff",
+                        "primary-fixed-dim": "#47d6ff",
+                        "surface-container-lowest": "#0e0e0f",
+                        "on-tertiary-container": "#6100de",
+                        "on-surface": "#e5e2e3",
+                        "surface-container-low": "#1c1b1c",
+                        "inverse-primary": "#00677f",
+                        "on-error-container": "#ffdad6",
+                        "on-surface-variant": "#bbc9cf",
+                        "inverse-surface": "#e5e2e3",
+                        "surface-dim": "#131314",
+                        "secondary": "#ffffff",
+                        "surface-tint": "#47d6ff",
+                        "primary": "#a5e7ff",
+                        "background": "#131314",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-primary-fixed-variant": "#004e60",
+                        "outline": "#859399",
+                        "on-tertiary-fixed": "#23005b",
+                        "inverse-on-surface": "#313031",
+                        "surface-bright": "#3a393a",
+                        "surface-container-highest": "#353436",
+                        "surface": "#131314",
+                        "on-secondary-fixed": "#00201d",
+                        "on-tertiary-fixed-variant": "#5700c9",
+                        "on-tertiary": "#3c0090",
+                        "secondary-fixed": "#00fdee",
+                        "on-secondary-fixed-variant": "#00504b",
+                        "on-background": "#e5e2e3",
+                        "surface-variant": "#353436",
+                        "on-secondary-container": "#00716a"
+                    },
+                    spacing: {
+                        "bento_padding": "32px",
+                        "base": "8px",
+                        "container_padding_mobile": "20px",
+                        "container_padding_desktop": "64px",
+                        "grid_gap": "24px"
+                    },
+                    fontFamily: {
+                        "label-mono": ["JetBrains Mono"],
+                        "display-lg": ["Geist"],
+                        "display-lg-mobile": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Geist"],
+                        "body-md": ["Inter"]
+                    },
+                    fontSize: {
+                        "label-mono": ["13px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container bg-background">
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
 
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="avatar.png" alt="Md Sahimuzzaman Avatar" class="nav-avatar" loading="eager" width="40" height="40">
-                <a href="#home">Md Sahimuzzaman</a>
+    <header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/5">
+        <nav class="flex justify-between items-center px-container_padding_mobile md:px-container_padding_desktop max-w-7xl mx-auto h-20">
+            <div class="font-display-lg text-headline-md font-bold tracking-tighter">
+                Sahim<span class="text-primary text-glow">.ai</span>
             </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#projects" class="nav-link">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://github.com/sahim99" target="_blank" class="nav-link nav-icon" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
+            
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex gap-10 items-center">
+                <a class="nav-link font-medium text-xs uppercase tracking-widest" href="#research">Research</a>
+                <a class="nav-link font-medium text-xs uppercase tracking-widest" href="#stack">Stack</a>
+                <a class="nav-link font-medium text-xs uppercase tracking-widest" href="#projects">Projects</a>
+                <a class="nav-link font-medium text-xs uppercase tracking-widest" href="#skills">Skills</a>
+                <a class="nav-link font-medium text-xs uppercase tracking-widest" href="#contact">Contact</a>
+                <a href="mailto:m.sahimuzzaman@gmail.com" class="primary-button px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider text-on-primary-fixed">
+                    Hire Me
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger -->
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" aria-label="Toggle Menu" class="material-symbols-outlined text-on-surface">menu</button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="md:hidden bg-surface-container border-b border-white/5">
+            <div class="flex flex-col p-4 gap-4">
+                <a class="nav-link font-medium text-sm uppercase tracking-widest" href="#research">Research</a>
+                <a class="nav-link font-medium text-sm uppercase tracking-widest" href="#stack">Stack</a>
+                <a class="nav-link font-medium text-sm uppercase tracking-widest" href="#projects">Projects</a>
+                <a class="nav-link font-medium text-sm uppercase tracking-widest" href="#skills">Skills</a>
+                <a class="nav-link font-medium text-sm uppercase tracking-widest" href="#contact">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-20 px-container_padding_mobile md:px-container_padding_desktop max-w-7xl mx-auto space-y-32">
+        
+        <!-- Hero Section -->
+        <section class="grid grid-cols-12 gap-grid_gap items-center min-h-[70vh]">
+            <div class="col-span-12 lg:col-span-6 space-y-8 fade-in-up">
+                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full glass-tag text-primary font-label-mono text-[10px] uppercase tracking-widest border-primary/20">
+                    <span class="h-1.5 w-1.5 rounded-full bg-secondary-fixed animate-pulse"></span>
+                    Available for high-impact collaborations
+                </div>
+                <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg leading-[1.05] tracking-tighter">
+                    Engineering <span class="text-primary text-glow">Production-Ready</span> Intelligence.
+                </h1>
+                <p class="text-on-surface-variant max-w-xl font-body-lg text-body-lg opacity-80">
+                    Associate AI Engineer specializing in high-performance RAG pipelines, distributed systems, and scalable cloud-native architectures.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects" class="primary-button px-8 py-3.5 rounded-full font-bold flex items-center gap-2 group text-sm uppercase tracking-wider text-on-primary-fixed text-decoration-none">
+                        Explore Projects
+                        <span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <div id="theme-toggle" class="theme-toggle">
-                        <button id="theme-toggle-btn" aria-label="Toggle light/dark mode">
-                            <span class="toggle-track">
-                                <span class="toggle-thumb">
-                                    <span class="toggle-icon"></span>
-                                </span>
-                            </span>
-                        </button>
-                    </div>
-                </li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                    <a href="Md_Sahimuzzaman_resume-C1.pdf" target="_blank" class="secondary-button px-8 py-3.5 rounded-full font-bold text-sm uppercase tracking-wider flex items-center gap-2">
+                        View Resume
+                        <span class="material-symbols-outlined" data-icon="open_in_new">open_in_new</span>
+                    </a>
+                </div>
             </div>
-        </div>
-    </nav>
+            
+            <div class="col-span-12 lg:col-span-6 relative h-[500px] lg:h-[600px] rounded-3xl overflow-hidden bg-surface-container-lowest border border-white/10 fade-in-up shadow-2xl" style="animation-delay: 0.2s">
+                <!-- Three.js Animation Container -->
+                <div class="absolute inset-0 w-full h-full cursor-crosshair" id="threejs-container-hero"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-6 left-6 flex items-center gap-3 glass-tag px-3 py-1.5 rounded-lg pointer-events-none">
+                    <span class="material-symbols-outlined text-primary text-sm" data-icon="data_exploration">data_exploration</span>
+                    <span class="font-label-mono text-[9px] text-primary/80 uppercase tracking-[0.2em]">Neural Environment Active</span>
+                </div>
+            </div>
+        </section>
 
-    <!-- Home Section -->
-    <section id="home" class="home-section">
-        <div class="hero-text">
-            <div class="badge-container" data-aos="fade-down">
-                <span class="pro-badge">Associate AI Engineer</span>
-            </div>
-            <h1 class="hero-title">
-                Md Sahimuzzaman
-            </h1>
-            <h2 class="hero-roles">
-                <span class="hero-gradient-text">AI & Machine Learning</span> | Full-Stack
-            </h2>
-            <p class="hero-subtitle">
-                Building production-grade intelligent systems, RAG pipelines, and scalable cloud infrastructure.
-            </p>
-            <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-secondary">Contact Me</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-grid">
-                <!-- Left Column: Info Cards -->
-                <div class="about-info">
-                    <div class="info-card">
-                        <div class="profile-row">
-                            <h3><i class="fas fa-brain"></i> Who I Am</h3>
-                            <p>I'm Md Sahimuzzaman, an Associate AI Engineer at Asrax Technologies. I specialize in developing AI-powered features, LLM integrations, and RAG pipelines.</p>
-                        </div>
-                        <div class="profile-row">
-                            <h3><i class="fas fa-laptop-code"></i> What I Do</h3>
-                            <p>I build production-grade full-stack web applications and intelligent systems. I design robust backend APIs (FastAPI) and scalable cloud infrastructure on GCP and AWS.</p>
-                        </div>
-                        <div class="profile-row last">
-                            <h3><i class="fas fa-graduation-cap"></i> Background</h3>
-                            <p>B.Tech in Artificial Intelligence & Machine Learning (2021-2025). Certified in AWS Cloud Technical Essentials and DevOps on AWS.</p>
-                        </div>
+        <!-- About Section -->
+        <section class="reveal-section" id="research">
+            <div class="grid grid-cols-12 gap-grid_gap items-center">
+                <div class="col-span-12 md:col-span-5">
+                    <div class="aspect-square rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 border border-white/5 relative group bg-surface-container">
+                        <img class="w-full h-full object-cover" alt="Md Sahimuzzaman Avatar" src="avatar.png" onerror="this.src='https://lh3.googleusercontent.com/aida-public/AB6AXuArcp-oGRueGsh-R-ZzE5KbiWQAMmoFT79Jy-AYgZI4-kTzXyaW167WRc1VSJN2wVTE9Ldn4EwvDmaOj93Tx6UQr7xmdwwcP40ZhTBpurzcmqVYA_yIWsAkAKFgL96T6SWJ6uoEqGX0ha3k_LRnsvaeROwgiI_lzCROmSz5OTi7lByS3Kx9vFc2n1TD2ty-DZVktAUYjZT29qdEiK9dwdjfK4fxmAg0LTwSCcp9YmW4Og19xq9TFMyF4Cpa1frxiyDQ31dAYOC9duU'"/>
+                        <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                     </div>
                 </div>
-
-                <!-- Right Column: Tech Stack -->
-                <div class="about-tech">
-                    <div class="info-card">
-                        <h3>Tech Stack</h3>
-                        <div class="tech-grid">
-                            <div class="tech-item" data-tilt>
-                                <i class="fab fa-python"></i>
-                                <span>Python</span>
-                            </div>
-                            <div class="tech-item" data-tilt>
-                                <i class="fas fa-project-diagram"></i>
-                                <span>RAG & LLMs</span>
-                            </div>
-                            <div class="tech-item" data-tilt>
-                                <i class="fas fa-bolt"></i>
-                                <span>FastAPI</span>
-                            </div>
-                            <div class="tech-item" data-tilt>
-                                <i class="fab fa-react"></i>
-                                <span>React</span>
-                            </div>
-                            <div class="tech-item" data-tilt>
-                                <i class="fab fa-docker"></i>
-                                <span>Docker</span>
-                            </div>
-                            <div class="tech-item" data-tilt>
-                                <i class="fab fa-aws"></i>
-                                <span>AWS & GCP</span>
-                            </div>
-                            <div class="tech-item" data-tilt>
-                                <i class="fas fa-database"></i>
-                                <span>PostgreSQL</span>
-                            </div>
-                            <div class="tech-item" data-tilt>
-                                <i class="fab fa-git-alt"></i>
-                                <span>CI/CD</span>
-                            </div>
-                        </div>
+                <div class="col-span-12 md:col-span-7 space-y-6 md:pl-12">
+                    <span class="font-label-mono text-primary text-[11px] uppercase tracking-[0.2em]">01 // Identity</span>
+                    <h2 class="font-display-lg text-headline-md tracking-tight">Bridging Academic Research with Robust Engineering.</h2>
+                    <p class="font-body-lg text-on-surface-variant leading-relaxed opacity-90">
+                        I am Md Sahimuzzaman, an Associate AI Engineer at Asrax Technologies specializing in <span class="text-primary font-semibold">Neural Architecture</span> and <span class="text-primary font-semibold">Distributed Systems</span>. My focus lies in developing AI-powered features, LLM integrations, and making complex intelligent systems lightning-fast, production-ready, and universally accessible.
+                    </p>
+                    <p class="font-body-lg text-on-surface-variant leading-relaxed opacity-90 mt-2">
+                        B.Tech in Artificial Intelligence & Machine Learning (2021-2025). Certified in AWS Cloud Technical Essentials and DevOps on AWS.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-8 pt-6 grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-500">
+                        <img alt="AWS" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqAItmGt7qPBbeSy1-a1P3CwV_0OXLkqxKTODzDsisb5I5oF1bsp0G_i3_zC8PiLRdmXomfrEqG4L0YR6PY4z2QTzJthrPRAUSmM8yogU6NbP_AQul6WAKlLqzSpGIalETkeR_vZWTDXTe-WKQcDjxPkMC01MkOK9HJ4wPFR3R-dsBAzPuQK0GeDeeNSVUdewqx4edKejNNE7G5ccqHT0fR_7LcyxNEPf_20PX1LJS6jhgs16DRtF8Rg_KgtyJAWDsIRd30cfFYiU"/>
+                        <img alt="GCP" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD439K-O34JUV2neoLXPLs_77QwODpI-x3a4H-J5SRubWUdMUzLpHDJkc_7OpGZZ-aM4AU3WvgIJueiTj7KaE2cJ4-ovhRUvx435FV834A9V2eTLWyFNiAC4-pRlHe2JCk7jWgN81uLPR9CxJ4r_H5cZ7RoysFqHT-9oo6Z_yT44okBDbtoXszUzufm6tGTJmOQ-ZpFnvKoBCt6a6NefmGkogVWCctKYgy4prSt9BwmfOeLiKP-00x6OaAbNfOcIi-pkUvgBmbWEc"/>
+                        <img alt="Python" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClKvtZONtLYETP3fdODOO-6erOmM45A-Vc4ws0a-sb4Z0xHT8oC3iLx95LILddFV6wGWw1FK2inKTFQx-6HeEI_ypHBWPD8_y5nxRRx22lb-IiyZjoFKG38xu1M73M8YnbCNMfAaK305dR7NwOASVUPKkiBjaAQVlD6d8B8oDdyJgN-NsaeoKxMaIGwU_vceylmjuimd7B7FQHfPaH_kvrawwVZju_hvHSdCScRNg_dCvHhdVpD7kJtoT3S0eKaGdeCv7a_Ny4Ei8"/>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="projects-grid">
-                <!-- 1. RAG System -->
-                <div class="project-card" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
-                    <a href="https://github.com/sahim99/rag-based-question-answering-system" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="project-cover">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3>RAG Question Answering System</h3>
-                            <p>End-to-end RAG pipeline for document ingestion, embedding generation, and vector search with FAISS.</p>
-                            <div class="project-tech">
-                                <span class="tech-badge">FastAPI</span>
-                                <span class="tech-badge">FAISS</span>
-                                <span class="tech-badge">Groq LLM</span>
-                                <span class="tech-badge">Streamlit</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- 2. AI Web Scraper -->
-                <div class="project-card" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
-                    <a href="https://github.com/sahim99/Ai-Web-Scraper" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="project-cover">
-                            <i class="fas fa-spider"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3>AI Web Scraper</h3>
-                            <p>Cloud-ready Selenium crawlers integrated with LLMs to convert raw HTML into structured datasets.</p>
-                            <div class="project-tech">
-                                <span class="tech-badge">Python</span>
-                                <span class="tech-badge">Selenium</span>
-                                <span class="tech-badge">LLMs</span>
-                                <span class="tech-badge">Streamlit</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- 3. CoreWebOps -->
-                <div class="project-card" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
-                    <a href="https://github.com/sahim99/core-web-ops" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="project-cover">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3>CoreWebOps Platform</h3>
-                            <p>Modular FastAPI backend deployed on Google Cloud Run, with real-time operations monitoring dashboard.</p>
-                            <div class="project-tech">
-                                <span class="tech-badge">FastAPI</span>
-                                <span class="tech-badge">React</span>
-                                <span class="tech-badge">Docker</span>
-                                <span class="tech-badge">GCP</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- 4. AI Chat Backend -->
-                <div class="project-card" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
-                    <a href="https://github.com/sahim99/ai-chat-backend" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="project-cover">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3>AI Chat System</h3>
-                            <p>Real-time AI chat with session memory, streaming responses, and WebSocket integration.</p>
-                            <div class="project-tech">
-                                <span class="tech-badge">FastAPI</span>
-                                <span class="tech-badge">WebSockets</span>
-                                <span class="tech-badge">Supabase</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+        <!-- Tech Stack Section (The Animated Grid) -->
+        <section class="reveal-section space-y-12" id="stack">
+            <div class="text-center space-y-4">
+                <span class="font-label-mono text-primary text-[11px] uppercase tracking-[0.2em]">02 // Tech Stack</span>
+                <h2 class="font-display-lg text-headline-md tracking-tight">Core Infrastructure & Capabilities</h2>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-form">
-                    <form action="https://formspree.io/f/xqabonqk" method="POST">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-grid_gap">
+                <!-- AI & ML Capabilities -->
+                <div class="lg:col-span-7 bento-card rounded-3xl p-8 space-y-6 relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-primary/10 blur-[100px] rounded-full"></div>
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary" data-icon="psychology">psychology</span>
+                        <h3 class="font-display-lg text-xl">AI & Machine Learning</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="tech-badge px-4 py-2 rounded-xl text-sm font-medium text-on-surface-variant hover:text-primary">Retrieval-Augmented Generation (RAG)</div>
+                        <div class="tech-badge px-4 py-2 rounded-xl text-sm font-medium text-on-surface-variant hover:text-primary">LLM Applications</div>
+                        <div class="tech-badge px-4 py-2 rounded-xl text-sm font-medium text-on-surface-variant hover:text-primary">AI Agents</div>
+                    </div>
+                    <div class="pt-4 border-t border-white/5">
+                        <p class="text-xs font-label-mono text-on-surface-variant uppercase tracking-widest mb-4">Core Languages & Frameworks</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tech-badge px-3 py-1.5 rounded-lg text-xs">Python</span>
+                            <span class="tech-badge px-3 py-1.5 rounded-lg text-xs">FastAPI</span>
+                            <span class="tech-badge px-3 py-1.5 rounded-lg text-xs">Streamlit</span>
+                            <span class="tech-badge px-3 py-1.5 rounded-lg text-xs">Java</span>
+                            <span class="tech-badge px-3 py-1.5 rounded-lg text-xs">Spring Boot</span>
+                            <span class="tech-badge px-3 py-1.5 rounded-lg text-xs">JavaScript</span>
+                            <span class="tech-badge px-3 py-1.5 rounded-lg text-xs">React</span>
+                            <span class="tech-badge px-3 py-1.5 rounded-lg text-xs">Docker</span>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
+                    </div>
                 </div>
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always interested in new opportunities and collaborations. Feel free to reach out using the form below, or contact me directly via email or LinkedIn. I'll respond as soon as possible!</p>
-                    <div class="social-links">
-                        <a href="https://github.com/sahim99" class="social-btn" title="GitHub" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/md-sahimuzzaman-7976902b6/" class="social-btn" title="LinkedIn" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="mailto:m.sahimuzzaman@gmail.com" class="social-btn" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="#" class="social-btn" title="Twitter" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                        </a>
+                
+                <!-- Databases -->
+                <div class="lg:col-span-5 bento-card rounded-3xl p-8 space-y-6">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary" data-icon="database">database</span>
+                        <h3 class="font-display-lg text-xl">Persistence Layer</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="tech-badge p-4 rounded-2xl flex flex-col items-center gap-2 text-center group cursor-default">
+                            <span class="text-xs font-bold text-on-surface">PostgreSQL</span>
+                            <span class="text-[10px] text-on-surface-variant opacity-60">Relational</span>
+                        </div>
+                        <div class="tech-badge p-4 rounded-2xl flex flex-col items-center gap-2 text-center cursor-default">
+                            <span class="text-xs font-bold text-on-surface">MongoDB</span>
+                            <span class="text-[10px] text-on-surface-variant opacity-60">NoSQL</span>
+                        </div>
+                        <div class="tech-badge p-4 rounded-2xl flex flex-col items-center gap-2 text-center cursor-default">
+                            <span class="text-xs font-bold text-on-surface">Redis</span>
+                            <span class="text-[10px] text-on-surface-variant opacity-60">Caching</span>
+                        </div>
+                        <div class="tech-badge p-4 rounded-2xl flex flex-col items-center gap-2 text-center cursor-default">
+                            <span class="text-xs font-bold text-on-surface">SQLite</span>
+                            <span class="text-[10px] text-on-surface-variant opacity-60">Edge</span>
+                        </div>
+                    </div>
+                    <div class="tech-badge w-full py-3 rounded-xl text-center text-xs font-bold text-on-surface cursor-default">Firestore (Google Cloud)</div>
+                </div>
+
+                <!-- DevOps Animated Marquee -->
+                <div class="lg:col-span-12 bento-card rounded-3xl p-0 overflow-hidden relative h-32 flex items-center">
+                    <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-surface-container-lowest to-transparent z-10"></div>
+                    <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-surface-container-lowest to-transparent z-10"></div>
+                    
+                    <div class="flex whitespace-nowrap animate-marquee items-center gap-12">
+                        <!-- Initial Set -->
+                        <span class="flex items-center gap-3 text-on-surface-variant font-display-lg text-2xl opacity-40 hover:opacity-100 hover:text-primary transition-all cursor-default">
+                            <span class="material-symbols-outlined">terminal</span> DOCKER
+                        </span>
+                        <span class="flex items-center gap-3 text-on-surface-variant font-display-lg text-2xl opacity-40 hover:opacity-100 hover:text-primary transition-all cursor-default">
+                            <span class="material-symbols-outlined">cloud</span> KUBERNETES
+                        </span>
+                        <span class="flex items-center gap-3 text-on-surface-variant font-display-lg text-2xl opacity-40 hover:opacity-100 hover:text-primary transition-all cursor-default">
+                            <span class="material-symbols-outlined">api</span> AWS
+                        </span>
+                        <span class="flex items-center gap-3 text-on-surface-variant font-display-lg text-2xl opacity-40 hover:opacity-100 hover:text-primary transition-all cursor-default">
+                            <span class="material-symbols-outlined">google</span> GCP
+                        </span>
+                        <span class="flex items-center gap-3 text-on-surface-variant font-display-lg text-2xl opacity-40 hover:opacity-100 hover:text-primary transition-all cursor-default">
+                            <span class="material-symbols-outlined">git</span> GIT
+                        </span>
+                        <span class="flex items-center gap-3 text-on-surface-variant font-display-lg text-2xl opacity-40 hover:opacity-100 hover:text-primary transition-all cursor-default">
+                            <span class="material-symbols-outlined">cached</span> CI/CD
+                        </span>
+                        <span class="flex items-center gap-3 text-on-surface-variant font-display-lg text-2xl opacity-40 hover:opacity-100 hover:text-primary transition-all cursor-default">
+                            <span class="material-symbols-outlined">github</span> GITHUB ACTIONS
+                        </span>
+                        
+                        <!-- Duplicated for seamless loop -->
+                        <span class="flex items-center gap-3 text-on-surface-variant font-display-lg text-2xl opacity-40 hover:opacity-100 hover:text-primary transition-all cursor-default">
+                            <span class="material-symbols-outlined">terminal</span> DOCKER
+                        </span>
+                        <span class="flex items-center gap-3 text-on-surface-variant font-display-lg text-2xl opacity-40 hover:opacity-100 hover:text-primary transition-all cursor-default">
+                            <span class="material-symbols-outlined">cloud</span> KUBERNETES
+                        </span>
+                        <span class="flex items-center gap-3 text-on-surface-variant font-display-lg text-2xl opacity-40 hover:opacity-100 hover:text-primary transition-all cursor-default">
+                            <span class="material-symbols-outlined">api</span> AWS
+                        </span>
+                        <span class="flex items-center gap-3 text-on-surface-variant font-display-lg text-2xl opacity-40 hover:opacity-100 hover:text-primary transition-all cursor-default">
+                            <span class="material-symbols-outlined">google</span> GCP
+                        </span>
+                        <span class="flex items-center gap-3 text-on-surface-variant font-display-lg text-2xl opacity-40 hover:opacity-100 hover:text-primary transition-all cursor-default">
+                            <span class="material-symbols-outlined">git</span> GIT
+                        </span>
+                        <span class="flex items-center gap-3 text-on-surface-variant font-display-lg text-2xl opacity-40 hover:opacity-100 hover:text-primary transition-all cursor-default">
+                            <span class="material-symbols-outlined">cached</span> CI/CD
+                        </span>
+                        <span class="flex items-center gap-3 text-on-surface-variant font-display-lg text-2xl opacity-40 hover:opacity-100 hover:text-primary transition-all cursor-default">
+                            <span class="material-symbols-outlined">github</span> GITHUB ACTIONS
+                        </span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Project Section -->
+        <section class="reveal-section space-y-12" id="projects">
+            <div class="flex justify-between items-end border-b border-white/5 pb-8">
+                <div>
+                    <span class="font-label-mono text-primary text-[11px] uppercase tracking-[0.2em]">03 // Portfolio</span>
+                    <h2 class="font-display-lg text-headline-md tracking-tight mt-2">Featured Engineering</h2>
+                </div>
+                <a class="group text-xs font-bold uppercase tracking-widest flex items-center gap-2 text-primary/80 hover:text-primary transition-colors" href="https://github.com/sahim99" target="_blank">
+                    All Projects
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_outward">arrow_outward</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-grid_gap">
+                <!-- Project 1: RAG System -->
+                <a href="https://github.com/sahim99/rag-based-question-answering-system" target="_blank" class="block bento-card rounded-2xl p-6 group cursor-pointer text-on-surface text-decoration-none">
+                    <div class="aspect-[16/10] bg-surface-container-lowest rounded-xl overflow-hidden border border-white/5 transition-all duration-500 relative">
+                        <img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="RAG System" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvgneC0XinNh0jH51f5krct-zYJvIbE3DDmSXMKv1w8hg67g8NHCx5l4btlToGr6SpISRQcQM6btSiSINgVf7OSGvXXl4KMooQg6h4WSKNEmpcubpg_ZHfCAfT7Lp1dTHLP1PfI3WvnOD1czgfs1FdkAEMK8C0V4EDZZIBZgSEewmkEukI4WXJJNGA0N4awF2FXaea-C82D6wyDT3TLluXAnIqiGzqwp7y-vU6gLhYOAut1bHK5m28DqyOoKOzTjHVN0UfKa6uwx8"/>
+                    </div>
+                    <div class="mt-8 space-y-3">
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 rounded glass-tag text-[9px] font-label-mono text-primary uppercase tracking-widest">FastAPI</span>
+                            <span class="px-2 py-0.5 rounded glass-tag text-[9px] font-label-mono text-primary uppercase tracking-widest">FAISS</span>
+                            <span class="px-2 py-0.5 rounded glass-tag text-[9px] font-label-mono text-primary uppercase tracking-widest">LLM</span>
+                        </div>
+                        <h3 class="font-display-lg text-2xl group-hover:text-primary transition-colors">RAG Question Answering System</h3>
+                        <p class="text-on-surface-variant line-clamp-2 text-sm opacity-80">End-to-end RAG pipeline for document ingestion, embedding generation, and vector search with FAISS.</p>
+                    </div>
+                </a>
+
+                <!-- Project 2: AI Web Scraper -->
+                <a href="https://github.com/sahim99/Ai-Web-Scraper" target="_blank" class="block bento-card rounded-2xl p-6 group cursor-pointer text-on-surface text-decoration-none">
+                    <div class="aspect-[16/10] bg-surface-container-lowest rounded-xl overflow-hidden border border-white/5 transition-all duration-500 relative">
+                        <img class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="Web Scraper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0Gzj3zlefF5JuKzRnVgb62BXiEwt4x4bhQUXfySbDLwB8tSmmqViZjZrTsdkKRbpSQkLwbujvzjjRZLfxUI3pIh4MEJS1xt-u2iQPHP80iq_N4kcccyA6t7DX55zwd_iIed_pD2qi5BQluDSxkybimHtvU7ryimFTrYT5ga-j68nz-qFpa9nBYUqYl3FIiBkOmMMqF0B15oP1JfXfv3iIP6Jo4qt5w3ytu7ddGPQWVjKiUKvpR0-rybcdatOtdPjm9zI4ms8YcPo"/>
+                    </div>
+                    <div class="mt-8 space-y-3">
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 rounded glass-tag text-[9px] font-label-mono text-primary uppercase tracking-widest">Selenium</span>
+                            <span class="px-2 py-0.5 rounded glass-tag text-[9px] font-label-mono text-primary uppercase tracking-widest">Agent</span>
+                        </div>
+                        <h3 class="font-display-lg text-2xl group-hover:text-primary transition-colors">Autonomous AI Web Scraper</h3>
+                        <p class="text-on-surface-variant line-clamp-2 text-sm opacity-80">Cloud-ready Selenium crawlers integrated with LLMs to convert raw HTML into structured datasets.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Feature Highlight: CoreWebOps -->
+            <div class="bento-card rounded-3xl p-bento_padding group relative overflow-hidden border border-white/10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1 space-y-6">
+                        <div class="inline-block px-3 py-1 bg-primary/10 border border-primary/20 text-primary font-label-mono text-[9px] rounded uppercase tracking-widest">Enterprise Platform</div>
+                        <h3 class="font-display-lg text-headline-md">CoreWebOps Platform</h3>
+                        <p class="text-on-surface-variant text-body-md opacity-90">Modular FastAPI backend deployed on Google Cloud Run, with real-time operations monitoring dashboard.</p>
+                        <div class="flex flex-wrap gap-4 pt-2">
+                            <a href="https://github.com/sahim99/core-web-ops" target="_blank" class="primary-button px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider text-on-primary-fixed no-underline">
+                                GitHub Repository
+                            </a>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2 rounded-2xl overflow-hidden border border-white/10 aspect-video shadow-2xl relative">
+                        <img alt="CoreWebOps Interface" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQkErggZ6ldiOXPlp2pa1MW8Zw_1KPGQ0fMrztB_sWNNCbT-NhGk92mI7l_Ab3-uTNC_nJLOrq_P1BKaejnEptIo4tmZISiqns8rUdtZQJVb870npLeVxkRzcQbTDWaG9J0bfZP4W0VSbVwt8ZBnhOVHniTBkI9bm8aOrVbUZkd1UrxTUbpERPXhs1luYYMY8P0Lz-oxxcaYhmgIoCnPhLX0OnI-OdljlIqjo6QxI7m9RrhI-SfiqtEUNWTiY5Bbib20jvdummxdo"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Projects: AI Chat Backend -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-grid_gap">
+                <a href="https://github.com/sahim99/ai-chat-backend" target="_blank" class="block bento-card rounded-2xl p-6 group cursor-pointer text-on-surface text-decoration-none">
+                    <div class="mt-2 space-y-3">
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 rounded glass-tag text-[9px] font-label-mono text-primary uppercase tracking-widest">WebSockets</span>
+                            <span class="px-2 py-0.5 rounded glass-tag text-[9px] font-label-mono text-primary uppercase tracking-widest">FastAPI</span>
+                            <span class="px-2 py-0.5 rounded glass-tag text-[9px] font-label-mono text-primary uppercase tracking-widest">Supabase</span>
+                        </div>
+                        <h3 class="font-display-lg text-2xl group-hover:text-primary transition-colors">AI Chat System</h3>
+                        <p class="text-on-surface-variant line-clamp-2 text-sm opacity-80">Real-time AI chat with session memory, streaming responses, and WebSocket integration.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Top Skills Section -->
+        <section class="reveal-section space-y-12" id="skills">
+            <div class="text-center space-y-4">
+                <span class="font-label-mono text-primary text-[11px] uppercase tracking-[0.2em]">04 // Core Focus</span>
+                <h2 class="font-display-lg text-headline-md tracking-tight">Technical Expertise</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="skill-card space-y-4 group">
+                    <div class="flex justify-between items-start">
+                        <span class="material-symbols-outlined text-primary text-3xl group-hover:text-glow transition-all" data-icon="neurology">neurology</span>
+                        <div class="flex flex-wrap gap-2 justify-end max-w-[150px]">
+                            <span class="px-2 py-0.5 rounded border border-white/5 text-[9px] font-label-mono text-on-surface-variant uppercase">PyTorch</span>
+                            <span class="px-2 py-0.5 rounded border border-white/5 text-[9px] font-label-mono text-on-surface-variant uppercase">Transformers</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold font-display-lg group-hover:text-primary transition-colors">Neural Architecture</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed opacity-80">Designing high-performance LLM fine-tuning pipelines and custom inference kernels for enterprise scale.</p>
+                </div>
+                
+                <div class="skill-card space-y-4 group">
+                    <div class="flex justify-between items-start">
+                        <span class="material-symbols-outlined text-primary text-3xl group-hover:text-glow transition-all" data-icon="cloud_done">cloud_done</span>
+                        <div class="flex flex-wrap gap-2 justify-end max-w-[150px]">
+                            <span class="px-2 py-0.5 rounded border border-white/5 text-[9px] font-label-mono text-on-surface-variant uppercase">Docker</span>
+                            <span class="px-2 py-0.5 rounded border border-white/5 text-[9px] font-label-mono text-on-surface-variant uppercase">GCP</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold font-display-lg group-hover:text-primary transition-colors">MLOps & Infrastructure</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed opacity-80">Architecting resilient, distributed GPU clusters and CI/CD pipelines for large-scale model deployments.</p>
+                </div>
+                
+                <div class="skill-card space-y-4 group">
+                    <div class="flex justify-between items-start">
+                        <span class="material-symbols-outlined text-primary text-3xl group-hover:text-glow transition-all" data-icon="database">database</span>
+                        <div class="flex flex-wrap gap-2 justify-end max-w-[150px]">
+                            <span class="px-2 py-0.5 rounded border border-white/5 text-[9px] font-label-mono text-on-surface-variant uppercase">PostgreSQL</span>
+                            <span class="px-2 py-0.5 rounded border border-white/5 text-[9px] font-label-mono text-on-surface-variant uppercase">FastAPI</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold font-display-lg group-hover:text-primary transition-colors">Data Engineering</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed opacity-80">Building real-time ETL pipelines for vector indexing and high-throughput RAG systems.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats & Trust -->
+        <section class="reveal-section grid grid-cols-2 lg:grid-cols-4 gap-grid_gap border-t border-white/5 pt-16">
+            <div class="space-y-2 text-center lg:text-left">
+                <div class="text-display-lg-mobile md:text-headline-md font-display-lg text-primary text-glow">4+</div>
+                <div class="text-on-surface-variant font-label-mono text-[9px] uppercase tracking-widest opacity-60">Years Experience</div>
+            </div>
+            <div class="space-y-2 text-center lg:text-left">
+                <div class="text-display-lg-mobile md:text-headline-md font-display-lg text-primary text-glow">10+</div>
+                <div class="text-on-surface-variant font-label-mono text-[9px] uppercase tracking-widest opacity-60">Projects Built</div>
+            </div>
+            <div class="space-y-2 text-center lg:text-left">
+                <div class="text-display-lg-mobile md:text-headline-md font-display-lg text-primary text-glow">3</div>
+                <div class="text-on-surface-variant font-label-mono text-[9px] uppercase tracking-widest opacity-60">Cloud Certifications</div>
+            </div>
+            <div class="space-y-2 text-center lg:text-left">
+                <div class="text-display-lg-mobile md:text-headline-md font-display-lg text-primary text-glow">99.9%</div>
+                <div class="text-on-surface-variant font-label-mono text-[9px] uppercase tracking-widest opacity-60">Uptime Focus</div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="reveal-section bento-card rounded-[2.5rem] p-bento_padding text-center space-y-12 border border-white/10" id="contact">
+            <div class="max-w-2xl mx-auto space-y-6">
+                <span class="font-label-mono text-primary text-[11px] uppercase tracking-[0.2em]">05 // Contact</span>
+                <h2 class="font-display-lg text-display-lg-mobile md:text-headline-md leading-tight">Ready to build the next-generation intelligence?</h2>
+                <p class="text-on-surface-variant text-body-md opacity-80">Currently accepting selective partnerships. Let's discuss how we can leverage AI to solve your engineering challenges.</p>
+            </div>
+            
+            <div class="max-w-md mx-auto space-y-10">
+                <form id="contactForm" action="https://formspree.io/f/xqabonqk" method="POST" class="space-y-4 text-left">
+                    <div class="relative group">
+                        <input name="name" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-6 py-4 focus:outline-none focus:border-primary/50 transition-all text-sm placeholder:text-white/20 text-on-surface" placeholder="Your Name" type="text" required/>
+                    </div>
+                    <div class="relative group">
+                        <input name="email" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-6 py-4 focus:outline-none focus:border-primary/50 transition-all text-sm placeholder:text-white/20 text-on-surface" placeholder="Your Work Email" type="email" required/>
+                    </div>
+                    <div class="relative group">
+                        <textarea name="message" class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-6 py-4 focus:outline-none focus:border-primary/50 transition-all text-sm placeholder:text-white/20 text-on-surface resize-none h-32" placeholder="Your Message..." required></textarea>
+                    </div>
+                    
+                    <button id="submitBtn" type="submit" class="w-full primary-button py-4 rounded-xl font-bold text-xs uppercase tracking-wider flex justify-center items-center gap-2">
+                        <span class="btn-text">Initialize Contact</span>
+                        <div class="form-spinner"></div>
+                    </button>
+                    <div id="form-success" class="hidden text-secondary-fixed text-sm text-center mt-4 font-bold">✓ Message successfully sent. I will respond shortly.</div>
+                    <div id="form-error" class="hidden text-error text-sm text-center mt-4 font-bold">An error occurred. Please try emailing directly.</div>
+                </form>
+
+                <div class="flex justify-center flex-wrap gap-8 md:gap-12 grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-500">
+                    <a class="hover:text-primary transition-colors flex items-center gap-2 font-label-mono text-[10px] tracking-widest text-on-surface-variant no-underline" href="mailto:m.sahimuzzaman@gmail.com">
+                        <span class="material-symbols-outlined text-lg">alternate_email</span> EMAIL
+                    </a>
+                    <a class="hover:text-primary transition-colors flex items-center gap-2 font-label-mono text-[10px] tracking-widest text-on-surface-variant no-underline" href="https://github.com/sahim99" target="_blank">
+                        <span class="material-symbols-outlined text-lg">code</span> GITHUB
+                    </a>
+                    <a class="hover:text-primary transition-colors flex items-center gap-2 font-label-mono text-[10px] tracking-widest text-on-surface-variant no-underline" href="https://www.linkedin.com/in/md-sahimuzzaman-7976902b6/" target="_blank">
+                        <span class="material-symbols-outlined text-lg">groups</span> LINKEDIN
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>Made with ❤️ by <span class="highlight">Md Sahimuzzaman</span></p>
+    <footer class="w-full py-16 border-t border-white/5 bg-background/50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-container_padding_mobile md:px-container_padding_desktop flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex flex-col items-center md:items-start gap-3">
+                <div class="font-display-lg text-2xl font-bold tracking-tighter">Sahim<span class="text-primary text-glow">.ai</span></div>
+                <p class="font-label-mono text-[9px] text-on-surface-variant uppercase tracking-widest opacity-60">© 2025 Md Sahimuzzaman. Engineered for Intelligence.</p>
+            </div>
+            <div class="flex gap-8">
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-label-mono text-[10px] tracking-widest uppercase no-underline" href="https://github.com/sahim99" target="_blank">Github</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-label-mono text-[10px] tracking-widest uppercase no-underline" href="https://www.linkedin.com/in/md-sahimuzzaman-7976902b6/" target="_blank">LinkedIn</a>
+            </div>
         </div>
     </footer>
 
-    <!-- Floating Mail Button -->
-    <a href="mailto:m.sahimuzzaman@gmail.com" class="floating-mail-btn" aria-label="Send Email">
-        <i class="fas fa-envelope"></i>
-    </a>
-
-    <!-- Load scripts with defer for better performance -->
-    <script src="script.js?v=1.2" defer></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    <script>
-      // Initialize AOS when DOM is ready
-      document.addEventListener('DOMContentLoaded', function() {
-        if (typeof AOS !== 'undefined') {
-          AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 100
-          });
-        }
-      });
-    </script>
+    <!-- Scripts -->
+    <script src="script.js"></script>
 </body>
-</html> 
+</html>
